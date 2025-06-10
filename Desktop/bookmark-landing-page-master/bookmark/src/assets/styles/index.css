@@ -14,3 +14,26 @@
   left: 50%;
   transform: translateX(-50%);
 }
+.bookmark main ::v-deep .van-sidebar {
+  background-color: pink;
+  width: 100%;
+}
+.bookmark main ::v-deep .van-sidebar .van-sidebar-item {
+  background-color: #fff;
+  border-bottom: 1px solid #dfdfdf;
+  text-align: center;
+}
+.bookmark main ::v-deep .van-sidebar .van-sidebar-item--select::before {
+  display: none;
+  content: none;
+}
+.bookmark main ::v-deep .van-sidebar .van-sidebar-item--select::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background-color: pink;
+}

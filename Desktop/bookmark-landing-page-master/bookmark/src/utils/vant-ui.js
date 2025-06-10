@@ -1,4 +1,12 @@
 import Vue from 'vue'
-import { Button } from 'vant'
+import {
+  Tab, Tabs, Sidebar, SidebarItem, Collapse, CollapseItem, Popup
+} from 'vant'
 
-Vue.use(Button)
+Vue.use(Tab)
+Vue.use(Tabs)
+Vue.use(Sidebar)
+Vue.use(SidebarItem)
+Vue.use(Collapse)
+Vue.use(CollapseItem)
+Vue.use(Popup)
