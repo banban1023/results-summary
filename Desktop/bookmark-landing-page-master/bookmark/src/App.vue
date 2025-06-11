@@ -9,38 +9,50 @@
             v-model="show"
             closeable
           >
-          <div class="nav_logo_white">
-            <img src="./assets/images/logo-white.svg" alt="">
+            <div class="nav_logo_white">
+              <img src="./assets/images/logo-white.svg" alt="">
+              <ul>
+                <li class="van-hairline--bottom van-hairline--top"><a href="#">FEATURES</a></li>
+                <li class="van-hairline--bottom"><a href="#">PRICING</a></li>
+                <li class="van-hairline--bottom"><a href="#">CONTACT</a></li>
+              </ul>
+              <button class="bookmark_login">
+                LOGIN
+              </button>
+              <div class="bookmark_share_btn">
+                <button class="facebook">share facebook</button>
+                <button class="twitter">share twitter</button>
+              </div>
+            </div>
+          </van-popup>
+          <div class="desktop_nav">
             <ul>
-              <li class="van-hairline--bottom van-hairline--top"><a href="#">FEATURES</a></li>
-              <li class="van-hairline--bottom"><a href="#">PRICING</a></li>
-              <li class="van-hairline--bottom"><a href="#">CONTACT</a></li>
+              <li><a href="#">FEATURES</a></li>
+              <li><a href="#">PRICING</a></li>
+              <li><a href="#">CONTACT</a></li>
             </ul>
             <button class="bookmark_login">
               LOGIN
             </button>
-            <div class="bookmark_share_btn">
-              <button class="facebook">share facebook</button>
-              <button class="twitter">share twitter</button>
-            </div>
           </div>
-          </van-popup>
         </nav>
       </div>
-      <div class="bookmark_bluebox">
-      </div>
-      <img src="./assets/images/illustration-hero.svg" alt="" class="bookmark_header_img">
-      <article class="bookmark_intro">
-        <h2>A Simple Bookmark Manager</h2>
-        <p>
-          A clean and simple interface to organize your favourite websites. Open a new
-          browser tab and see your sites load instantly. Try it for free.
-        </p>
-        <div class="btn--flex">
-          <button class="bookmark_chrome_get">Get it on Chrome</button>
-          <button class="bookmark_firefox_get">Get it on Firefox</button>
+      <div class="header-msg-img">
+        <div class="bookmark_bluebox">
         </div>
-      </article>
+        <img src="./assets/images/illustration-hero.svg" alt="" class="bookmark_header_img">
+        <article class="bookmark_intro">
+          <h2>A Simple Bookmark Manager</h2>
+          <p>
+            A clean and simple interface to organize your favourite websites. Open a new
+            browser tab and see your sites load instantly. Try it for free.
+          </p>
+          <div class="btn--flex">
+            <button class="bookmark_chrome_get">Get it on Chrome</button>
+            <button class="bookmark_firefox_get">Get it on Firefox</button>
+          </div>
+        </article>
+      </div>
     </header>
     <main>
       <section class="bookmark_features">
@@ -51,22 +63,30 @@
             Your bookmarks sync between your devices so you can access them on the go.
           </p>
         </article>
-        <van-sidebar v-model="activeKey">
+        <van-sidebar v-model="activeKey" class="bookmark_sidebar">
           <van-sidebar-item title="Simple Bookmarking" />
           <van-sidebar-item title="Speedy Searching" />
           <van-sidebar-item title="Easy Sharing" />
+        </van-sidebar>
+        <van-tabs v-model="activeKey" class="bookmark_tabs">
+          <van-tab title="Simple Bookmarking"></van-tab>
+          <van-tab title="Speedy Searching"></van-tab>
+          <van-tab title="Easy Sharing"></van-tab>
+        </van-tabs>
+        <div class="feature_flex">
           <ul class="bookmark_tabs_img">
             <li>
               <img :src="tabsimg[activeKey]" alt="">
             </li>
           </ul>
-          <ul class="bookmark_sidebar">
+          <ul class="bookmark_sidebar_msg">
             <li>
               <h3>{{featuresList[activeKey].title}}</h3>
               <p>{{featuresList[activeKey].msg}}</p>
+              <button>More Info</button>
             </li>
           </ul>
-        </van-sidebar>
+        </div>
         <div class="bookmark_bluebox"></div>
       </section>
       <section class="bookmark_extension">
@@ -111,11 +131,13 @@
       <section class="bookmark_contact">
         <p>35,000+ ALREADY JOINED</p>
         <h4>Stay up-to-date with what we’re doing</h4>
-        <div class="bookmark_error">
-          <input type="email" placeholder="Enter your email address">
-          <span class="error_msg"></span>
+        <div class="bookmark_group">
+          <div class="error">
+            <input :class="{error_inp: isError}" type="email" placeholder="Enter your email address" v-model="email">
+            <i :class="{ error_msg: isError }" v-if="isError">Whoops, make sure it's an email</i>
+          </div>
+          <button class="bookmark_btn_contact" @click="validateEmail">Contact Us</button>
         </div>
-        <button class="bookmark_btn_contact">Contact Us</button>
       </section>
       <section class="bookmark_share">
         <img src="./assets/images/logo-white.svg" alt="" class="bookmark_logo">
@@ -141,8 +163,10 @@ export default {
   data () {
     return {
       activeKey: 0,
-      activeName: '1',
+      activeName: '0',
       show: false, // 弹出层
+      isError: false,
+      email: '',
       // tabs
       featuresList: [
         {
@@ -214,6 +238,19 @@ export default {
     // 弹出层
     showPopup () {
       this.show = true
+    },
+    // 邮箱验证
+    validateEmail () {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      if (this.email === '') {
+        this.isError = true
+        return
+      }
+      if (emailRegex.test(this.email)) {
+        this.isError = false
+      } else {
+        this.isError = true
+      }
     }
   }
 }
