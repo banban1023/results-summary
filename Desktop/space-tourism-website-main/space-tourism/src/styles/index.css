@@ -1,0 +1,128 @@
+.index {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.index header {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  height: 88px;
+  align-items: center;
+}
+.index header .logo a {
+  display: block;
+  width: 40px;
+  height: 40px;
+  font-size: 0;
+  background: url('../assets/shared/logo.svg') no-repeat center center / cover;
+}
+.index header .index_mobile_nav {
+  font-size: 0;
+  width: 24px;
+  height: 21px;
+  background: url('../assets/shared/icon-hamburger.svg');
+}
+.index header .index_desktop_nav {
+  display: none;
+}
+.index header .line {
+  display: none;
+}
+.index header ::v-deep .van-popup {
+  height: 100%;
+  width: 254px;
+  background: rgba(11, 13, 23, 0.15);
+  backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  padding: 133px 0 0 32px;
+}
+.index header ::v-deep .van-popup a {
+  font-family: 'BarlowCondensed';
+  color: #fff;
+  margin-bottom: 32px;
+}
+.index header ::v-deep .van-popup a span {
+  margin-right: 12px;
+}
+.index header ::v-deep .van-popup .active {
+  border-right: 3px solid #fff;
+  margin-top: 2px;
+}
+.index header ::v-deep .van-overlay {
+  background-color: transparent;
+}
+.index router-view {
+  flex: 1;
+  overflow: auto;
+}
+@media (min-width: 768px) {
+  .index header {
+    height: 96px;
+    padding: 0;
+    justify-content: flex-start;
+  }
+  .index header .logo {
+    padding: 24px 40px;
+  }
+  .index header .logo a {
+    width: 48px;
+    height: 48px;
+  }
+  .index header .index_mobile_nav {
+    display: none;
+  }
+  .index header .index_desktop_nav {
+    width: 488px;
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(80px);
+    height: 100%;
+    line-height: 96px;
+  }
+  .index header .index_desktop_nav a {
+    font-family: 'BarlowCondensed';
+    color: #fff;
+    margin-left: 48px;
+    letter-spacing: 2px;
+  }
+  .index header .index_desktop_nav a:first-child {
+    display: none;
+  }
+  .index header .index_desktop_nav a span {
+    font-weight: bold;
+    letter-spacing: 2.7px;
+    margin-right: 12px;
+  }
+}
+@media (min-width: 1440px) {
+  .index header {
+    padding: 40px 0 0 0;
+    height: 136px;
+    justify-content: space-between;
+  }
+  .index header .logo {
+    padding: 0 64px;
+  }
+  .index header .index_desktop_nav {
+    width: 736px;
+    padding-right: 64px;
+    justify-content: flex-end;
+  }
+  .index header .index_desktop_nav a:first-child {
+    display: block;
+  }
+  .index header .line {
+    position: absolute;
+    left: 176px;
+    z-index: 10;
+    display: block;
+    width: 560px;
+    height: 1px;
+    flex-grow: 1;
+    z-index: 1;
+    opacity: 0.25;
+    background: #FFFFFF;
+  }
+}

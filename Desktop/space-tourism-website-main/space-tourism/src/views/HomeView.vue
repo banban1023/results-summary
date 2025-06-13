@@ -1,12 +1,19 @@
 <template>
   <div class="home">
-    <nav>
-      <router-link to="/">HOME</router-link>
-      <router-link to="/destination">DESTINATION</router-link>
-      <router-link to="/crew">CREW</router-link>
-      <router-link to="/technology">TECHNOLOGY</router-link>
-    </nav>
-    <router-view/>
+    <article class="home_msg">
+      <p class="title_prev">
+        SO, YOU WANT TO TRAVEL TO
+      </p>
+      <h2 class="title">SPACE</h2>
+      <p class="content">
+        Let’s face it; if you want to go to space, you might as well genuinely go to
+        outer space and not hover kind of on the edge of it. Well sit back, and relax
+        because we’ll give you a truly out of this world experience!
+      </p>
+    </article>
+    <section class="home_btn">
+      <button @click="$router.push('/destination')">Explore</button>
+    </section>
   </div>
 </template>
 
@@ -18,3 +25,7 @@ export default {
   }
 }
 </script>
+
+<style lang="less" scoped>
+@import '@/styles/home.less';
+</style>
