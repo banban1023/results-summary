@@ -21,14 +21,20 @@
             {{item.description}}
           </p>
           <div class="line"></div>
-          <p class="distance">
-            AVG. DISTANCE
-            <span>{{item.distance}}</span>
-          </p>
-          <p class="time">
-            EST. TRAVEL TIME
-            <span>{{item.travel}}</span>
-          </p>
+          <div class="count">
+            <div class="count_box">
+              <p class="distance">
+                AVG. DISTANCE
+              </p>
+              <span>{{item.distance}}</span>
+            </div>
+            <div class="count_box">
+              <p class="time">
+                EST. TRAVEL TIME
+              </p>
+              <span>{{item.travel}}</span>
+            </div>
+          </div>
         </van-tab>
       </van-tabs>
     </section>
