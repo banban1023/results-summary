@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <header>
-      <h1 class="logo"><a href="#">space-tourism</a></h1>
+      <h1 class="logo"><a href="/home">space-tourism</a></h1>
       <van-cell @click="showPopup" class="index_mobile_nav">展示弹出层</van-cell>
       <van-popup v-model="show" position="right" closeable>
         <router-link

@@ -129,9 +129,9 @@
     position: absolute;
     left: 176px;
     display: block;
-    width: 100%;
+    width: 1000px;
+    overflow: hidden;
     height: 1px;
-    flex-grow: 1;
     z-index: 1;
     opacity: 0.25;
     background: #FFFFFF;

@@ -2,8 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  min-height: 100%;
+  padding: 24px 24px 0;
   &::before {
     content: '';
     position: fixed;
@@ -205,8 +204,8 @@
 
 @media (min-width: 1440px) {
   .destination {
-    min-height: 100%;
-    padding: 48px 165px;
+    min-height: 780px;
+    padding: 48px 165px 0;
     flex-direction: row;
     &::before {
       content: '';
@@ -219,7 +218,7 @@
       }
       .destination_tabs_img {
         width: 539px;
-        height: 734px;
+        height: 600px;
         img {
           width: 480px;
           height: 480px;
@@ -227,7 +226,8 @@
       }
     }
     .destination_msg {
-      padding: 132px 47px;
+      height: 600px;
+      padding: 132px 47px 0;
     }
   }
 }
