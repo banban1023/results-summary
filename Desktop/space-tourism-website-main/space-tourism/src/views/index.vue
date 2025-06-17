@@ -14,10 +14,13 @@
       </van-popup>
       <div class="line"></div>
       <nav class="index_desktop_nav">
-        <router-link to="/home"><span>00</span>HOME</router-link>
-        <router-link to="/destination"><span>01</span>DESTINATION</router-link>
-        <router-link to="/crew"><span>02</span>CREW</router-link>
-        <router-link to="/technology"><span>03</span>TECHNOLOGY</router-link>
+        <router-link
+          v-for="(item, index) in routerList"
+          :key="item.router"
+          :to="item.router"
+          @click="activeIndex = index"
+          :class="{active: activeIndex === index}"
+        ><span>{{item.number}}</span>{{item.name}}</router-link>
       </nav>
     </header>
     <router-view/>
@@ -35,13 +38,26 @@ export default {
         { router: '/destination', number: '01', name: 'DESTINATION' },
         { router: '/crew', number: '02', name: 'CREW' },
         { router: '/technology', number: '03', name: 'TECHNOLOGY' }
-      ]
+      ],
+      activeIndex: 0
     }
   },
   methods: {
     showPopup () {
       this.show = true
     }
+  },
+  watch: {
+    '$route' (to) {
+      this.activeIndex = this.routerList.findIndex(
+        item => item.router === to.path
+      )
+    }
+  },
+  created () {
+    this.activeIndex = this.routerList.findIndex(
+      item => item.router === this.$route.path
+    )
   }
 }
 </script>

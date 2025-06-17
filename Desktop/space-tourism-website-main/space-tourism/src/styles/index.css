@@ -95,6 +95,12 @@
     letter-spacing: 2.7px;
     margin-right: 12px;
   }
+  .index header .index_desktop_nav a:hover {
+    border-bottom: 5px solid rgba(255, 255, 255, 0.25);
+  }
+  .index header .index_desktop_nav .active {
+    border-bottom: 5px solid #fff;
+  }
 }
 @media (min-width: 1440px) {
   .index header {
@@ -129,7 +135,7 @@
     position: absolute;
     left: 176px;
     display: block;
-    width: 1000px;
+    width: 1220px;
     overflow: hidden;
     height: 1px;
     z-index: 1;

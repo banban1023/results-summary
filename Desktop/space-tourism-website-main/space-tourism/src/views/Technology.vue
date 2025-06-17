@@ -6,25 +6,29 @@
         SPACE LAUNCH 101
       </h2>
     </header>
-    <section class="technology_img" v-if="techLandList.length > 0">
-      <img src="" alt="" class="tech_deskTop">
-      <img :src="getImageUrl(techLandList[activeIndex])" alt="" class="tech_mobile">
-    </section>
-    <section class="technology_content">
-      <ol>
-        <li
-          v-for="item in 3"
-          :key="item"
-          @click="activeIndex = item-1"
-        >{{item}}</li>
-      </ol>
-      <article>
-        <p class="technology_role"></p>
-          <h3 class="technology_name"></h3>
-          <p class="technology_content">
-          </p>
-      </article>
-    </section>
+    <div class="technology_flex">
+      <section class="technology_img" v-if="techLandList.length > 0">
+        <img :src="getImageUrl(techPortList[activeIndex])" alt="" class="tech_deskTop">
+        <img :src="getImageUrl(techLandList[activeIndex])" alt="" class="tech_mobile">
+      </section>
+      <section class="technology_content">
+        <ol>
+          <li
+            v-for="item in 3"
+            :key="item"
+            @click="activeIndex = item-1"
+            :class="{active : activeIndex === item -1}"
+          >{{item}}</li>
+        </ol>
+        <article v-if="techPortList.length > 0">
+          <p class="technology_role">THE TERMINOLOGY…</p>
+            <h3 class="technology_name">{{technologyList[activeIndex].name}}</h3>
+            <p class="technology_content_p">
+              {{technologyList[activeIndex].description}}
+            </p>
+        </article>
+      </section>
+    </div>
   </div>
 </template>
 
