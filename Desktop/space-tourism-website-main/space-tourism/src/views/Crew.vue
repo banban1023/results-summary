@@ -25,6 +25,7 @@
     </header>
       <section class="crew_img" v-if="crewImgList.length > 0">
         <img
+          :key="crewImgList[activeIndex]"
           :src="getImageUrl(crewImgList[activeIndex])"
           :alt="crewList[activeIndex].name">
       </section>
@@ -33,6 +34,7 @@
 
 <script>
 import axios from 'axios'
+import { playCrewAnimation } from '@/utils/animations.js'
 export default {
   name: 'CrewPage',
   data () {
@@ -52,12 +54,27 @@ export default {
       console.log(this.crewList)
       this.crewImgList = this.crewList.map((item) => item.images.png)
       console.log(this.crewImgList)
+      this.$nextTick(() => {
+        playCrewAnimation()
+      })
     },
     getImageUrl (path) {
       const images = require.context('@/assets/crew', false, /\.(png|jpe?g|webp)$/)
       const fileName = path.split('/').pop()
       return images(`./${fileName}`)
     }
+  },
+  watch: {
+    activeIndex () {
+      this.$nextTick(() => {
+        playCrewAnimation()
+      })
+    }
+  },
+  mounted () {
+    // this.$nextTick(() => {
+    //   playCrewAnimation()
+    // })
   }
 }
 </script>

@@ -77,7 +77,7 @@
     width: 488px;
     display: flex;
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(80px);
+    backdrop-filter: blur(15px);
     height: 100%;
     line-height: 96px;
   }
@@ -86,6 +86,8 @@
     color: #fff;
     margin-left: 48px;
     letter-spacing: 2px;
+    border-bottom: 5px solid transparent;
+    transition: all 0.4s;
   }
   .index header .index_desktop_nav a:first-child {
     display: none;
@@ -99,6 +101,9 @@
     border-bottom: 5px solid rgba(255, 255, 255, 0.25);
   }
   .index header .index_desktop_nav .active {
+    border-bottom: 5px solid #fff;
+  }
+  .index header .index_desktop_nav .active:hover {
     border-bottom: 5px solid #fff;
   }
 }

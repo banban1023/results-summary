@@ -3,12 +3,15 @@
     <header>
       <h1 class="logo"><a href="/home">space-tourism</a></h1>
       <van-cell @click="showPopup" class="index_mobile_nav">展示弹出层</van-cell>
-      <van-popup v-model="show" position="right" closeable>
+      <van-popup v-model="show" position="right" closeable class="van-popup">
         <router-link
           v-for="(item, index) in routerList"
           :key="index"
           :to="item.router"
-          :class="{active: $route.path === item.router}"
+          :class="{
+            active: $route.path === item.router,
+            // split: show  // 当弹出层显示时，添加.split类
+          }"
           @click.native="show = false"
         ><span>{{item.number}}</span>{{item.name}}</router-link>
       </van-popup>
@@ -28,6 +31,7 @@
 </template>
 
 <script>
+// import { runSplitAnimation } from '@/utils/animations'
 export default {
   name: 'IndexPage',
   data () {
@@ -54,7 +58,7 @@ export default {
       )
     }
   },
-  created () {
+  mounted () {
     this.activeIndex = this.routerList.findIndex(
       item => item.router === this.$route.path
     )

@@ -65,6 +65,7 @@
   justify-content: center;
   align-items: center;
   font-family: 'Bellefair';
+  transition: all 0.3s;
 }
 .technology .technology_content ol li:last-child {
   margin-right: 0;

@@ -6,7 +6,11 @@
         PICK YOUR DESTINATION
       </p>
       <div class="destination_tabs_img" v-if="destinationsList.length">
-        <img :src="getImageUrl(destinationsList[active]?.images?.png)" alt="">
+        <img
+          :src="getImageUrl(destinationsList[active]?.images?.png)"
+          alt=""
+          :key="destinationsList[active]?.images?.png"
+        >
       </div>
     </section>
     <section class="destination_msg">
@@ -26,13 +30,13 @@
               <p class="distance">
                 AVG. DISTANCE
               </p>
-              <span>{{item.distance}}</span>
+              <span class="distance_num">{{item.distance}}</span>
             </div>
             <div class="count_box">
               <p class="time">
                 EST. TRAVEL TIME
               </p>
-              <span>{{item.travel}}</span>
+              <span class="time_num">{{item.travel}}</span>
             </div>
           </div>
         </van-tab>
@@ -43,6 +47,7 @@
 
 <script>
 import axios from 'axios'
+import { playDestinationAnimation } from '@/utils/animations.js'
 export default {
   name: 'DestinationPage',
   data () {
@@ -54,11 +59,21 @@ export default {
   created () {
     this.getDestinations()
   },
+  watch: {
+    active () {
+      this.$nextTick(() => {
+        playDestinationAnimation()
+      })
+    }
+  },
   methods: {
     async getDestinations () {
       const res = await axios.get('http://localhost:3000/destinations')
       this.destinationsList = res.data
-      console.log(this.destinationsList)
+      // console.log(this.destinationsList)
+      this.$nextTick(() => {
+        playDestinationAnimation()
+      })
     },
     getImageUrl (path) {
       const images = require.context('@/assets/destination', false, /\.(png|jpe?g|webp)$/)

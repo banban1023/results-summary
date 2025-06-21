@@ -21,11 +21,11 @@
           >{{item}}</li>
         </ol>
         <article v-if="techPortList.length > 0">
-          <p class="technology_role">THE TERMINOLOGY…</p>
-            <h3 class="technology_name">{{technologyList[activeIndex].name}}</h3>
-            <p class="technology_content_p">
-              {{technologyList[activeIndex].description}}
-            </p>
+          <p class="technology_role">THE&#8205; TERMINOLOGY&#8205;…</p>
+          <h3 class="technology_name">{{technologyList[activeIndex].name}}</h3>
+          <p class="technology_content_p">
+            {{technologyList[activeIndex].description}}
+          </p>
         </article>
       </section>
     </div>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+// import { runFancySplitAnimation } from '@/utils/animations.js'
 import axios from 'axios'
 export default {
   name: 'TechnologyPage',
@@ -50,9 +51,9 @@ export default {
       this.technologyList = data
       this.techLandList = data.map((item) => item.images.landscape)
       this.techPortList = data.map((item) => item.images.portrait)
-      console.log(this.technologyList)
-      console.log(this.techLandList)
-      console.log(this.techPortList)
+      // console.log(this.technologyList)
+      // console.log(this.techLandList)
+      // console.log(this.techPortList)
     },
     getImageUrl (path) {
       const images = require.context('@/assets/technology', false, /\.(png|jpe?g|webp)$/)
@@ -62,6 +63,9 @@ export default {
   },
   created () {
     this.getTechnoligyList()
+  },
+  mounted () {
+    // runFancySplitAnimation('.split_tech') // 执行动画
   }
 }
 </script>
