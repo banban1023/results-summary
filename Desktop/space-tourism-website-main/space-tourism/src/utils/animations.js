@@ -100,7 +100,8 @@ export function playDestinationAnimation () {
   })
 
   timeline.from(
-    ['h2', '.msg_content', '.distance', '.time', '.distance_num', '.time_num'],
+    // ['h2', '.msg_content', '.distance', '.time', '.distance_num', '.time_num'],
+    ['h2', '.msg_content', '.count_box', '.time_num'],
     {
       y: 30,
       opacity: 0,

@@ -34,7 +34,8 @@
 
 <script>
 // import { runFancySplitAnimation } from '@/utils/animations.js'
-import axios from 'axios'
+import data from '@/data/data.json'
+// import axios from 'axios'
 export default {
   name: 'TechnologyPage',
   data () {
@@ -46,14 +47,19 @@ export default {
     }
   },
   methods: {
-    async getTechnoligyList () {
-      const { data } = await axios.get('http://localhost:3000/technology')
-      this.technologyList = data
-      this.techLandList = data.map((item) => item.images.landscape)
-      this.techPortList = data.map((item) => item.images.portrait)
-      // console.log(this.technologyList)
-      // console.log(this.techLandList)
-      // console.log(this.techPortList)
+    // async getTechnoligyList () {
+    //   const { data } = await axios.get('http://localhost:3000/technology')
+    //   this.technologyList = data
+    //   this.techLandList = data.map((item) => item.images.landscape)
+    //   this.techPortList = data.map((item) => item.images.portrait)
+    //   // console.log(this.technologyList)
+    //   // console.log(this.techLandList)
+    //   // console.log(this.techPortList)
+    // },
+    getTechnoligyList () {
+      this.technologyList = data.technology
+      this.techLandList = data.technology.map((item) => item.images.landscape)
+      this.techPortList = data.technology.map((item) => item.images.portrait)
     },
     getImageUrl (path) {
       const images = require.context('@/assets/technology', false, /\.(png|jpe?g|webp)$/)

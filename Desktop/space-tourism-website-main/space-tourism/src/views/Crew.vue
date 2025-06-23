@@ -33,7 +33,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import data from '@/data/data.json'
 import { playCrewAnimation } from '@/utils/animations.js'
 export default {
   name: 'CrewPage',
@@ -48,12 +49,19 @@ export default {
     this.getCrewList()
   },
   methods: {
-    async getCrewList () {
-      const res = await axios.get(' http://localhost:3000/crew')
-      this.crewList = res.data
-      console.log(this.crewList)
+    // async getCrewList () {
+    //   const res = await axios.get(' http://localhost:3000/crew')
+    //   this.crewList = res.data
+    //   // console.log(this.crewList)
+    //   this.crewImgList = this.crewList.map((item) => item.images.png)
+    //   // console.log(this.crewImgList)
+    //   this.$nextTick(() => {
+    //     playCrewAnimation()
+    //   })
+    // },
+    getCrewList () {
+      this.crewList = data.crew
       this.crewImgList = this.crewList.map((item) => item.images.png)
-      console.log(this.crewImgList)
       this.$nextTick(() => {
         playCrewAnimation()
       })

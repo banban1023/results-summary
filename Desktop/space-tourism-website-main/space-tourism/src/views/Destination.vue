@@ -46,7 +46,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import data from '@/data/data.json'
 import { playDestinationAnimation } from '@/utils/animations.js'
 export default {
   name: 'DestinationPage',
@@ -67,10 +68,16 @@ export default {
     }
   },
   methods: {
-    async getDestinations () {
-      const res = await axios.get('http://localhost:3000/destinations')
-      this.destinationsList = res.data
-      // console.log(this.destinationsList)
+    // async getDestinations () {
+    //   const res = await axios.get('http://localhost:3000/destinations')
+    //   this.destinationsList = res.data
+    //   // console.log(this.destinationsList)
+    //   this.$nextTick(() => {
+    //     playDestinationAnimation()
+    //   })
+    // },
+    getDestinations () {
+      this.destinationsList = data.destinations
       this.$nextTick(() => {
         playDestinationAnimation()
       })
