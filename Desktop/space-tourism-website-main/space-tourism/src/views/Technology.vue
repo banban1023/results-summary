@@ -33,7 +33,7 @@
 </template>
 
 <script>
-// import { runFancySplitAnimation } from '@/utils/animations.js'
+import { playTechnologyAnimation } from '@/utils/animations.js'
 import data from '@/data/data.json'
 // import axios from 'axios'
 export default {
@@ -67,11 +67,19 @@ export default {
       return images(`./${fileName}`)
     }
   },
-  created () {
-    this.getTechnoligyList()
-  },
   mounted () {
     // runFancySplitAnimation('.split_tech') // 执行动画
+    this.getTechnoligyList()
+    this.$nextTick(() => {
+      playTechnologyAnimation()
+    })
+  },
+  watch: {
+    activeIndex () {
+      this.$nextTick(() => {
+        playTechnologyAnimation()
+      })
+    }
   }
 }
 </script>

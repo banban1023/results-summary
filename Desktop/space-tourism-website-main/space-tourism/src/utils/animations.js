@@ -100,8 +100,7 @@ export function playDestinationAnimation () {
   })
 
   timeline.from(
-    // ['h2', '.msg_content', '.distance', '.time', '.distance_num', '.time_num'],
-    ['h2', '.msg_content', '.count_box', '.time_num'],
+    ['.msg_content', '.count_box'],
     {
       y: 30,
       opacity: 0,
@@ -113,32 +112,27 @@ export function playDestinationAnimation () {
   )
 }
 
-// export function playDestinationAnimation (data = {}) {
-//   const timeline = gsap.timeline()
+export function playTechnologyAnimation () {
+  const timeline = gsap.timeline()
 
-//   timeline.from('.destination_tabs_img img', {
-//     scale: 0.8,
-//     opacity: 0,
-//     duration: 1,
-//     ease: 'power2.out'
-//   })
+  // 图片部分动画
+  timeline.from('.technology_img img', {
+    scale: 0.8,
+    opacity: 0,
+    duration: 1,
+    ease: 'power2.out'
+  })
 
-//   timeline.from(
-//     ['h2', '.msg_content', '.distance', '.time'],
-//     {
-//       y: 30,
-//       opacity: 0,
-//       stagger: 0.15,
-//       duration: 0.6,
-//       ease: 'power2.out'
-//     },
-//     '-=0.8'
-//   )
-
-//   if (data.distance) {
-//     animateNumber('.distance_num', data.distance)
-//   }
-//   if (data.travel) {
-//     animateNumber('.time_num', data.travel)
-//   }
-// }
+  // 内容部分动画
+  timeline.from(
+    ['.technology_role', '.technology_name', '.technology_content_p'],
+    {
+      y: 30,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 0.6,
+      ease: 'power2.out'
+    },
+    '-=0.8' // 与图片动画部分重叠
+  )
+}
