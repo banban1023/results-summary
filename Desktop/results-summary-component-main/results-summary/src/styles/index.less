@@ -48,4 +48,80 @@
       color: @font-color;
     }
   }
+  .summary {
+    padding: 22px 30px 30px;
+    .summary_title {
+      font-size: 18px;
+      margin-bottom: 24px;
+    }
+    .summary_btn {
+      height: 56px;
+      width: 100%;
+      border-radius: 28px;
+      border: none;
+      background-color: rgb(48, 59, 89);
+      color: #fff;
+      font-size: 19px;
+      &:hover {
+        background-image: linear-gradient(
+          to top,
+          @Light-royal-blue,
+          @Light-slate-blue
+        );
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    height: 100vh;
+    .results_summary {
+      display: flex;
+      background-color: #fff;
+      width: 737px;
+      height: 513px;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 30px;
+      overflow: hidden;
+      .result {
+        height: 100%;
+        width: 369px;
+        border-radius: 30px;
+        .result_title {
+          font-size: 25px;
+          margin-top: 8px;
+        }
+        .result_round {
+          width: 202px;
+          height: 202px;
+          margin-top: 40px;
+          .result_score {
+            font-size: 70px;
+          }
+        }
+        .result_grade {
+          font-size: 31px;
+        }
+        .result_evaluate {
+          font-size: 18px;
+          margin-top: 15px;
+        }
+      }
+      .summary {
+        padding: 40px;
+        flex: 1;
+        .summary_title {
+          font-size: 23px;
+        }
+        .summary_btn {
+          margin-top: 25px;
+        }
+      }
+    }
+  }
 }
